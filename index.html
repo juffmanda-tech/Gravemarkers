@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grave Markers — Launching 15 July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #141310;
+    --surface:  #1c1b18;
+    --border:   #3a3a34;
+    --mid:      #8c8c7a;
+    --brass:    #b88f43;
+    --cream:    #f3f0e9;
+  }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── Layout ── */
+  .page {
+    width: 100%;
+    max-width: 720px;
+    padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ── Logo ── */
+  .logo-wrap {
+    width: 100%;
+    margin-bottom: clamp(3rem, 7vw, 5rem);
+  }
+
+  .logo-svg {
+    /* viewBox is cropped to just the mark + text, so this fills well */
+    width: clamp(280px, 62vw, 500px);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* ── Thin brass rule ── */
+  .rule {
+    width: 40px;
+    height: 1px;
+    background: var(--brass);
+    margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
+    opacity: 0.6;
+  }
+
+  /* ── Countdown block ── */
+  .countdown-block {
+    width: 100%;
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .launching-label {
+    font-size: clamp(0.55rem, 1.8vw, 0.65rem);
+    font-weight: 500;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  .countdown {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(0.5rem, 2.5vw, 1.5rem);
+  }
+
+  .unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .plate {
+    position: relative;
+    width: clamp(72px, 18vw, 140px);
+    height: clamp(80px, 20vw, 156px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Brass top accent — the signature detail */
+    border-top: 2px solid var(--brass);
+  }
+
+  .plate-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    color: var(--cream);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .unit-label {
+    font-size: clamp(0.5rem, 1.5vw, 0.6rem);
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .sep {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--border);
+    line-height: 1;
+    margin-top: clamp(16px, 4.5vw, 46px);
+    user-select: none;
+  }
+
+  .launch-date {
+    margin-top: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.6rem, 1.8vw, 0.7rem);
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* ── Copy ── */
+  .copy-block {
+    max-width: 420px;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+  }
+
+  .copy-block p {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--mid);
+  }
+
+  .copy-block strong {
+    display: block;
+    margin-top: 1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+  }
+
+  /* ── WhatsApp button ── */
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    background: transparent;
+    border: 1px solid var(--brass);
+    color: var(--brass);
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: clamp(0.9rem, 2.5vw, 1.1rem) clamp(1.75rem, 5vw, 3rem);
+    transition: background 0.22s, color 0.22s;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .wa-btn:hover, .wa-btn:focus {
+    background: var(--brass);
+    color: var(--bg);
+    outline: none;
+  }
+
+  .wa-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* ── Mobile tweaks ── */
+  @media (max-width: 480px) {
+    .sep { display: none; }
+    .countdown { gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Logo — viewBox cropped to content bounds (~130,100 to 270,200) -->
+  <div class="logo-wrap">
+    <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="125 98 165 102" aria-label="Grave Markers">
+      <defs>
+        <style>
+          .lc2 { fill: #f3f0e9; font-family: Arial-Black,'Arial Black'; font-weight: 800; font-size: 25.32px; isolation: isolate; }
+          .lc3 { fill: #f3f0e9; font-family: Arial-Black,'Arial Black'; font-weight: 800; font-size: 14.06px; letter-spacing: .27em; isolation: isolate; }
+          .lc4 { fill: none; stroke: #b88f43; stroke-linecap: round; stroke-linejoin: round; stroke-width: 5.33px; }
+          .lc5 { fill: #b88f43; }
+          .lc6 { letter-spacing: .06em; }
+          .lc7 { letter-spacing: .11em; }
+          .lc8 { letter-spacing: .11em; }
+        </style>
+      </defs>
+      <path class="lc4" d="M159.31,105.6h-20.76c-4.1,0-6.15,2.05-6.15,6.15v49.97c0,4.61,2.31,6.92,6.92,6.92h17.68c4.61,0,6.92-2.31,6.92-6.92v-27.68h-13.84"/>
+      <path class="lc5" d="M145.85,168.26h4.61l-2.31,26.14-2.31-26.14Z"/>
+      <text class="lc2" transform="translate(172.49 147.33)"><tspan class="lc7" x="0" y="0">R</tspan><tspan class="lc6" x="22.5" y="0">A</tspan><tspan class="lc8" x="43.61" y="0">VE</tspan></text>
+      <text class="lc3" transform="translate(172.49 169.83)"><tspan x="0" y="0">MARKERS</tspan></text>
+    </svg>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="countdown-block">
+    <p class="launching-label">Launching in</p>
+    <div class="countdown">
+      <div class="unit">
+        <div class="plate"><span class="plate-num" id="days">00</span></div>
+        <span class="unit-label">Days</span>
+      </div>
+      <div class="sep">:</div>
+      <div class="unit">
+        <div class="plate"><span class="plate-num" id="hours">00</span></div>
+        <span class="unit-label">Hours</span>
+      </div>
+      <div class="sep">:</div>
+      <div class="unit">
+        <div class="plate"><span class="plate-num" id="minutes">00</span></div>
+        <span class="unit-label">Minutes</span>
+      </div>
+      <div class="sep">:</div>
+      <div class="unit">
+        <div class="plate"><span class="plate-num" id="seconds">00</span></div>
+        <span class="unit-label">Seconds</span>
+      </div>
+    </div>
+    <p class="launch-date">Wednesday, 15 July 2026</p>
+  </div>
+
+  <div class="copy-block">
+    <p>
+      Custom mild steel grave markers,<br>delivered nationwide.
+      <strong>We handle it.</strong>
+    </p>
+  </div>
+
+  <a class="wa-btn" href="https://wa.me/27692705386?text=Hi%2C%20I%27d%20like%20to%20register%20my%20interest%20in%20Grave%20Markers" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.529 5.843L.057 23.454a.5.5 0 0 0 .609.61l5.701-1.497A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.888 9.888 0 0 1-5.05-1.382l-.36-.214-3.742.982.998-3.65-.235-.374A9.86 9.86 0 0 1 2.1 12C2.1 6.533 6.533 2.1 12 2.1c5.467 0 9.9 4.433 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/>
+    </svg>
+    Message us on WhatsApp
+  </a>
+
+</div>
+<script>
+  const launch = new Date('2026-07-15T08:00:00+02:00').getTime();
+  function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+  function tick() {
+    const diff = launch - Date.now();
+    if (diff <= 0) {
+      ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '00');
+      document.querySelector('.launching-label').textContent = 'We are live!';
+      return;
+    }
+    document.getElementById('days').textContent    = pad(diff / 86400000);
+    document.getElementById('hours').textContent   = pad((diff % 86400000) / 3600000);
+    document.getElementById('minutes').textContent = pad((diff % 3600000) / 60000);
+    document.getElementById('seconds').textContent = pad((diff % 60000) / 1000);
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
